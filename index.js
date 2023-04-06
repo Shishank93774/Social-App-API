@@ -13,6 +13,8 @@ import { fileURLToPath, pathToFileURL } from 'url';
 import authRoutes from './routes/auth.js';
 import userRoutes from './routes/user.js';
 import postRoutes from './routes/post.js';
+import chatRoutes from './routes/chat.js';
+import messageRoutes from './routes/message.js';
 import { register } from './controllers/auth.js';
 import { createPost } from './controllers/post.js';
 import { verifyToken } from './middleware/auth.js';
@@ -57,6 +59,8 @@ app.post("/posts", verifyToken, upload.single("picture"), createPost);
 app.use("/auth", authRoutes);
 app.use("/users", userRoutes);
 app.use("/posts", postRoutes);
+app.use("/chat", chatRoutes);
+app.use("/message", messageRoutes);
 
 // Mongoose Setup :->
 const PORT = process.env.PORT || 6001;
